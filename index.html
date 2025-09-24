@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFarm Dashboard</title>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Icons CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-leaf logo-icon"></i>
+                <h1>SmartFarm</h1>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-section="dashboard">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="soil">
+                            <i class="fas fa-seedling nav-icon"></i>
+                            <span>Soil Analysis</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="pest">
+                            <i class="fas fa-bug nav-icon"></i>
+                            <span>Pest Detection</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="crops">
+                            <i class="fas fa-wheat-awn nav-icon"></i>
+                            <span>Crop Advisory</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="market">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span>Market Prices</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="weather">
+                            <i class="fas fa-cloud-sun nav-icon"></i>
+                            <span>Weather</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="reports">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="settings">
+                            <i class="fas fa-cog nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">SmartFarm</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="breadcrumb-item active" id="current-section">Dashboard</span>
+                    </div>
+                    <h2 class="page-title" id="page-title">Dashboard</h2>
+                </div>
+                <div class="header-info">
+                    <div class="user-info">
+                        <div>
+                            <div class="user-name">Farm Manager</div>
+                            <div class="user-date" id="current-date">Wednesday, September 24, 2025</div>
+                        </div>
+                        <div class="user-avatar">FM</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div id="dashboard-section" class="section-content active">
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h4 class="stat-title">Total Farms Monitored</h4>
+                            <div class="stat-icon stat-icon--primary">
+                                <i class="fas fa-tractor"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">15</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h4 class="stat-title">Active Alerts</h4>
+                            <div class="stat-icon stat-icon--warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">3</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h4 class="stat-title">Today's Recommendations</h4>
+                            <div class="stat-icon stat-icon--success">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h4 class="stat-title">Weather Status</h4>
+                            <div class="stat-icon stat-icon--info">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">Good</div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <div class="main-panel">
+                        <!-- Soil Health Card -->
+                        <div class="soil-health-card">
+                            <div class="soil-header">
+                                <h3 class="soil-title">
+                                    <i class="fas fa-seedling" style="color: var(--color-primary); margin-right: 8px;"></i>
+                                    Soil Health Overview
+                                </h3>
+                                <div class="soil-status">
+                                    <span class="status status--success">Good</span>
+                                    <div class="soil-update">Last updated: 24 Sep, 14:30</div>
+                                </div>
+                            </div>
+                            <div class="soil-metrics">
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">Nitrogen</div>
+                                    <div class="soil-metric-value">120 kg/ha</div>
+                                </div>
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">Phosphorus</div>
+                                    <div class="soil-metric-value">55 kg/ha</div>
+                                </div>
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">Potassium</div>
+                                    <div class="soil-metric-value">80 kg/ha</div>
+                                </div>
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">pH Level</div>
+                                    <div class="soil-metric-value">6.8</div>
+                                </div>
+                            </div>
+                            <div class="soil-additional">
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">Moisture</div>
+                                    <div class="soil-metric-value">45%</div>
+                                </div>
+                                <div class="soil-metric">
+                                    <div class="soil-metric-label">Organic Matter</div>
+                                    <div class="soil-metric-value">3.2%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Market Prices -->
+                        <div class="market-section">
+                            <h3 class="section-title">Market Prices</h3>
+                            <div class="market-grid">
+                                <div class="price-card">
+                                    <h4 class="price-crop">Rice</h4>
+                                    <div class="price-value">₹2,150/quintal</div>
+                                    <div class="price-change price-change--up">+2.3%</div>
+                                </div>
+                                <div class="price-card">
+                                    <h4 class="price-crop">Wheat</h4>
+                                    <div class="price-value">₹2,800/quintal</div>
+                                    <div class="price-change price-change--down">-1.1%</div>
+                                </div>
+                                <div class="price-card">
+                                    <h4 class="price-crop">Cotton</h4>
+                                    <div class="price-value">₹6,200/quintal</div>
+                                    <div class="price-change price-change--up">+5.2%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pest Alerts -->
+                        <div class="pest-alerts">
+                            <h3 class="section-title">Pest Alerts</h3>
+                            <div class="pest-alert-item">
+                                <div class="pest-alert-header">
+                                    <h4 class="pest-name">Aphids - Cotton</h4>
+                                    <span class="pest-severity">Medium</span>
+                                </div>
+                                <p class="pest-details">Affected area: 2.5 acres</p>
+                                <p class="pest-recommendation">Recommendation: Apply neem oil spray</p>
+                            </div>
+                            <div class="pest-alert-item">
+                                <div class="pest-alert-header">
+                                    <h4 class="pest-name">Leaf Blight - Rice</h4>
+                                    <span class="pest-severity">High</span>
+                                </div>
+                                <p class="pest-details">Affected area: 1.8 acres</p>
+                                <p class="pest-recommendation">Recommendation: Immediate fungicide treatment required</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-panel">
+                        <!-- Weather Widget -->
+                        <div class="weather-card">
+                            <h3 class="activity-title">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                                Pune, Maharashtra
+                            </h3>
+                            <div class="weather-current">
+                                <div class="weather-left">
+                                    <div class="weather-temp">28°C</div>
+                                    <div class="weather-condition">Partly Cloudy</div>
+                                </div>
+                                <i class="fas fa-cloud-sun weather-icon"></i>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <i class="fas fa-tint" style="margin-right: 6px;"></i>
+                                    <span>Humidity: 65%</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-wind" style="margin-right: 6px;"></i>
+                                    <span>Wind: 12 km/h</span>
+                                </div>
+                            </div>
+                            <div class="weather-forecast">
+                                <h4 class="forecast-title">3-Day Forecast</h4>
+                                <div class="forecast-item">
+                                    <span class="forecast-day">Today</span>
+                                    <span class="forecast-temps">32°C / 22°C</span>
+                                </div>
+                                <div class="forecast-item">
+                                    <span class="forecast-day">Tomorrow</span>
+                                    <span class="forecast-temps">30°C / 20°C</span>
+                                </div>
+                                <div class="forecast-item">
+                                    <span class="forecast-day">Thursday</span>
+                                    <span class="forecast-temps">29°C / 21°C</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Feed -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <h3 class="activity-title">Recent Activity</h3>
+                                <button class="export-btn">
+                                    <i class="fas fa-download"></i>
+                                    Export
+                                </button>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-avatar activity-avatar--success">S</div>
+                                    <div class="activity-content">
+                                        <p class="activity-message">Soil test completed for Field A - pH level normal</p>
+                                        <div class="activity-time">11:45</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-avatar activity-avatar--warning">P</div>
+                                    <div class="activity-content">
+                                        <p class="activity-message">Aphids detected in cotton crop - treatment recommended</p>
+                                        <div class="activity-time">11:30</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-avatar activity-avatar--info">M</div>
+                                    <div class="activity-content">
+                                        <p class="activity-message">Rice prices increased by ₹50/quintal in local market</p>
+                                        <div class="activity-time">11:15</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-avatar activity-avatar--error">W</div>
+                                    <div class="activity-content">
+                                        <p class="activity-message">Rain expected in next 48 hours - postpone pesticide application</p>
+                                        <div class="activity-time">11:00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Access Features -->
+                <div class="features-section">
+                    <h3 class="section-title">Quick Access</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card" data-section="pest">
+                            <i class="fas fa-bug feature-icon"></i>
+                            <h4 class="feature-title">Pest Detection</h4>
+                            <p class="feature-description">AI-powered pest identification and treatment recommendations</p>
+                            <button class="btn btn--primary btn--sm">Access</button>
+                        </div>
+                        <div class="feature-card" data-section="crops">
+                            <i class="fas fa-wheat-awn feature-icon"></i>
+                            <h4 class="feature-title">Crop Advisory</h4>
+                            <p class="feature-description">Expert guidance for optimal crop management</p>
+                            <button class="btn btn--primary btn--sm">Access</button>
+                        </div>
+                        <div class="feature-card" data-section="market">
+                            <i class="fas fa-chart-line feature-icon"></i>
+                            <h4 class="feature-title">Market Prices</h4>
+                            <p class="feature-description">Real-time market prices and trends analysis</p>
+                            <button class="btn btn--primary btn--sm">Access</button>
+                        </div>
+                        <div class="feature-card" data-action="expert">
+                            <i class="fas fa-user-md feature-icon"></i>
+                            <h4 class="feature-title">Ask Expert</h4>
+                            <p class="feature-description">Connect with agricultural experts for personalized advice</p>
+                            <button class="btn btn--primary btn--sm">Access</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other section content (initially hidden) -->
+            <div id="soil-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Detailed Soil Analysis</h3>
+                        <p>Comprehensive soil health monitoring and analysis for optimal crop growth.</p>
+                        <div class="soil-metrics" style="margin-top: 20px;">
+                            <div class="soil-metric">
+                                <div class="soil-metric-label">Nitrogen</div>
+                                <div class="soil-metric-value">120 kg/ha</div>
+                            </div>
+                            <div class="soil-metric">
+                                <div class="soil-metric-label">Phosphorus</div>
+                                <div class="soil-metric-value">55 kg/ha</div>
+                            </div>
+                            <div class="soil-metric">
+                                <div class="soil-metric-label">Potassium</div>
+                                <div class="soil-metric-value">80 kg/ha</div>
+                            </div>
+                            <div class="soil-metric">
+                                <div class="soil-metric-label">pH Level</div>
+                                <div class="soil-metric-value">6.8</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pest-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Pest Detection System</h3>
+                        <p>AI-powered pest detection and treatment recommendations for optimal crop protection.</p>
+                        <button class="btn btn--primary" style="margin-top: 16px;">
+                            <i class="fas fa-camera" style="margin-right: 8px;"></i>
+                            Upload Image for Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="crops-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Crop Advisory Services</h3>
+                        <p>Expert guidance for crop management, fertilization schedules, and best practices for optimal yield.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="market-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Market Intelligence</h3>
+                        <p>Real-time commodity prices and market trends analysis to make informed selling decisions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="weather-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Weather Monitoring</h3>
+                        <p>Extended weather forecasts and agricultural weather alerts to plan farming activities effectively.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reports-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Reports & Analytics</h3>
+                        <p>Generate comprehensive reports for soil analysis, pest detection, weather patterns, and crop performance.</p>
+                        <button class="btn btn--primary" style="margin-top: 16px;">
+                            <i class="fas fa-download" style="margin-right: 8px;"></i>
+                            Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="settings-section" class="section-content">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>System Settings</h3>
+                        <p>Configure notification preferences, data retention, and system parameters.</p>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label class="form-label">Notification Preferences</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <label style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" checked>
+                                    <span>Email alerts for pest detection</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" checked>
+                                    <span>SMS notifications for weather alerts</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" style="margin-top: 16px;">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Ask Expert -->
+    <div id="expert-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Ask Expert</h3>
+                <button class="modal-close" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 16px;">Connect with our agricultural experts for personalized advice and support.</p>
+                <div class="form-group">
+                    <label class="form-label">Your Question</label>
+                    <textarea class="form-control" rows="4" placeholder="Describe your farming question or concern..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Crop Type</label>
+                    <select class="form-control">
+                        <option>Select crop</option>
+                        <option>Rice</option>
+                        <option>Wheat</option>
+                        <option>Cotton</option>
+                    </select>
+                </div>
+                <button class="btn btn--primary btn--full-width">Submit Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu toggle (hidden by default, shown on mobile) -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
